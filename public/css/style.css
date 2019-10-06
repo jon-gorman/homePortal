@@ -1,0 +1,28 @@
+
+
+
+
+
+
+/*******Door*******/
+
+/*Button*/
+
+
+#padLock{
+    display: inline-block;
+    /*border: 1px solid black;*/
+    height: 200px;
+    width: 300px;
+    /*background-color: teal;*/
+}
+.wrapper{
+    height: 100vh;
+    text-align: center;
+}
+.title{
+    text-align: center;
+}
+#lockToggle{
+    text-align: center;
+}

@@ -1,0 +1,125 @@
+
+<script
+	src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous">
+
+</script>
+<div class="wrapper">
+	<h1 class="title">Door Control</h1>
+	<button type="button" class="btn btn-primary btn-lg">lock switch</button>
+	<div style="visibility: hidden" id="accessId">
+		{{accessId}}
+	</div>
+	<div style="visibility: hidden" id="accessToken">
+		{{accessToken}}
+	</div>
+	<div class="lockWrapper">
+		<div></div>
+		<div id="padLock" class="padLock">Door Status:
+		</div>
+	</div>
+</div>
+<script>
+	let getId = $('#accessId').prop('innerHTML');
+	let getToken = $('#accessToken').prop('innerHTML');
+	let id = getId.replace(/\s/g, '');
+	let token = getToken.replace(/\s/g, '')
+</script>
+
+<script>
+	window.onload =function() {
+console.log(id);
+console.log(token);
+		fetch(`https://api.particle.io/v1/devices/${id}/ledState?access_token=${token}`)
+			.then(function (response) {
+				return response.json();
+			}).then(function (jsonData) {
+			let results = jsonData.result;
+			console.log(jsonData.result);
+			if(results===1){
+				$('.padLock').append( "<h2>LOCKED</h2>" );
+				// $('.padLock').css('background-color', 'red');
+				console.log("I am red because I equal 1")
+			}
+			if(results===0){
+				$('.padLock').append( "<h2>NOT-LOCKED</h2>" );
+				// $('.padLock').css('background-color', 'green');
+				console.log("I am green because I equal 0")
+			}
+		});
+	};
+	// ,
+	// 500);
+
+	function switchOn() {
+		$.ajax({
+			url: `https://api.particle.io/v1/devices/${id}/lock?`,
+			type: 'post',
+			data: {
+				params: "on",
+				access_token: token,
+			},
+			error: function(e) {
+				console.log(e);
+			},
+			headers:{
+				'Content-type': 'application/x-www-form-urlencoded',
+				'Accept': 'application/json'
+			}
+
+		});
+		// document.getElementById('padLock').style.backgroundcolor = "red";
+		console.log("locked");
+		setInterval(function(){
+			location.reload()
+		}, 4000)
+	}
+
+
+	function switchOff() {
+		$.ajax({
+			url: `https://api.particle.io/v1/devices/${id}/lock?`,
+			type: 'post',
+			data: {
+				params: "off",
+				access_token: token,
+			},
+			error: function(e) {
+				console.log(e);
+			},
+			headers:{
+				'Content-type': 'application/x-www-form-urlencoded',
+				'Accept': 'application/json'
+			}
+		});
+		// document.getElementById('padLock').style.backgroundcolor = "green";
+		// document.getElementById('padLock').style.display = "none";
+		console.log("unlocked");
+		setInterval(function(){
+			location.reload()
+		}, 4000)
+
+	}
+</script>
+
+<script>
+	$( "button" ).click(function() {
+		console.log($('h2').text())
+		var toggle = this;
+		// if ($('.padLock').css('background-color','red'));
+		if($("h2").text()==='LOCKED')
+		{
+			console.log("contains locked");
+			return (toggle.a = !toggle.a) ? switchOff(toggle) : switchOn(toggle);
+		}
+		// else if($('.padLock').css('background-color','green'))
+		else if($("h2").text()==='NOT-LOCKED')
+		{
+			console.log("contains not locked")
+			// // console.log("Im green at the moment and Im about to turn red")
+			return (toggle.a = !toggle.a) ? switchOn(toggle) : switchOff(toggle);
+			// //   return switchOn()
+		}
+	})
+</script>
