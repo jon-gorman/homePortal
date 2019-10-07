@@ -123,3 +123,31 @@ console.log(token);
 		}
 	})
 </script>
+<script>
+	fetch(`https://api.particle.io/v1/devices/${id}/?access_token=${token}`)
+		.then(function (response) {
+			return response.json();
+		}).then(function (deviceData) {
+		let results = deviceData.name;
+		console.log(results);
+	})
+	fetch(`https://api.particle.io/v1/diagnostics/${id}/last?access_token=${token}`)
+		.then(function (response) {
+			return response.json();
+		}).then(function (deviceStatus) {
+		let networkStatus = deviceStatus.diagnostics.payload.service.device.status;
+		console.log(networkStatus, "network status");
+		let signalStrength = deviceStatus.diagnostics.payload.device.network.signal.strength;
+		console.log(signalStrength, "signal strength")
+	})
+  fetch(`https://api.particle.io/v1/devices/${id}/ledState?access_token=${token}`)
+	.then(function (response){
+	  return response.json();
+	}).then(function (deviceConnectivity){
+	  let connectionStatus = deviceConnectivity.coreInfo.last_heard;
+	  // let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
+		//   date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+	  console.log(new Date(`${connectionStatus}`).getUTCHours(), new Date(`${connectionStatus}`).getUTCFullYear() , )
+		  // + `${connectionStatus}`.getUTCMonth()`${connectionStatus}` + `${connectionStatus}`.getUTCDate().getUTCHours() + `${connectionStatus}`.getUTCMinutes() + `${connectionStatus}`.getUTCSeconds()),  "date")
+  })
+</script>
