@@ -15,8 +15,9 @@ const mongoose = require('mongoose');
 const app = express();
 // Load Routes from Routes file
 const users = require('./routes/users');
-const dash = require('./routes/dash')
+const dash = require('./routes/dash');
 const door = require('./routes/door');
+const camera = require('./routes/camera')
 
 
 //dotenv
@@ -103,8 +104,9 @@ app.get('/about', function(req, res){
 //Use routes
 
 app.use('/users', users);
-app.use('/dash', dash)
+app.use('/dash', dash);
 app.use('/door', door);
+app.use('/camera', camera);
 
 
 

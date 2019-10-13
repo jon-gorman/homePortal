@@ -144,10 +144,10 @@ console.log(token);
 	.then(function (response){
 	  return response.json();
 	}).then(function (deviceConnectivity){
-	  let connectionStatus = deviceConnectivity.coreInfo.last_heard;
-	  // let now_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),
-		//   date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-	  console.log(new Date(`${connectionStatus}`).getUTCHours(), new Date(`${connectionStatus}`).getUTCFullYear() , )
-		  // + `${connectionStatus}`.getUTCMonth()`${connectionStatus}` + `${connectionStatus}`.getUTCDate().getUTCHours() + `${connectionStatus}`.getUTCMinutes() + `${connectionStatus}`.getUTCSeconds()),  "date")
+	  let lastHeard = deviceConnectivity.coreInfo.last_heard;
+	  console.log(new Date(lastHeard), "last heard")
+	  console.log(lastHeard);
+	  let lastHandShake = deviceConnectivity.coreInfo.last_handshake_at;
+		console.log(new Date(lastHandShake), "last handshake")
   })
 </script>
