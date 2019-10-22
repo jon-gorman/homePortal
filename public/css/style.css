@@ -1,13 +1,30 @@
 
+/******* NavBar *******/
+#nav{
+    background-color: #5AC0DF !important;
+    box-shadow:
+            0 1px 1px rgba(0,0,0,0.08),
+            0 2px 2px rgba(0,0,0,0.12),
+            0 4px 4px rgba(0,0,0,0.16),
+            0 8px 8px rgba(0,0,0,0.20);
+}
 
 
 
-
-
-/*******Door*******/
+/******* Door *******/
 
 /*Button*/
 
+#buttonLock{
+    background-color: #5AC0DF !important;
+    border: none;
+    box-shadow:
+            0 1px 1px rgba(0,0,0,0.11),
+            0 2px 2px rgba(0,0,0,0.11),
+            0 4px 4px rgba(0,0,0,0.11),
+            0 6px 8px rgba(0,0,0,0.11),
+            0 8px 16px rgba(0,0,0,0.11);
+}
 
 #padLock{
     display: inline-block;

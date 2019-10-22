@@ -111,7 +111,7 @@ app.use('/camera', camera);
 
 
 //need this for heroku as well as node start script in the package.json file.
-const port = process.env.PORT || 5011;
+const port = process.env.PORT || 5010;
 
 app.listen(port, function(){
   console.log(`homePortal listening on port ${port}`)
