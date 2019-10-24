@@ -1,6 +1,7 @@
 
 /******* NavBar *******/
 #nav{
+    font-family: 'Righteous', cursive;
     background-color: #5AC0DF !important;
     box-shadow:
             0 1px 1px rgba(0,0,0,0.08),

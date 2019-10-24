@@ -7,7 +7,7 @@
 </script>
 <div class="wrapper">
 	<h1 class="title">Door Control</h1>
-	<button type="button" class="btn btn-primary btn-lg" id="buttonLock" onclick="switchOn()">lock switch</button>
+	<button type="button" class="btn btn-primary btn-lg" id="buttonLock" onclick="switchOn()" >lock switch</button>
 	<button type="button" class="btn btn-primary btn-lg" id="buttonLock" onclick="switchOff()">unlock switch</button>
 	<div style="visibility: hidden" id="accessId">
 		{{accessId}}
@@ -54,6 +54,7 @@ console.log(token);
 	// 500);
 
 	function switchOn() {
+
 		$.ajax({
 			url: `https://api.particle.io/v1/devices/${id}/lock?`,
 			type: 'post',
@@ -70,7 +71,8 @@ console.log(token);
 			}
 
 		});
-		// document.getElementById('padLock').style.backgroundcolor = "red";
+
+		//
 		console.log("locked");
 		setInterval(function(){
 			location.reload()
