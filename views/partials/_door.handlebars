@@ -96,8 +96,7 @@ console.log(token);
 				'Accept': 'application/json'
 			}
 		});
-		// document.getElementById('padLock').style.backgroundcolor = "green";
-		// document.getElementById('padLock').style.display = "none";
+
 		console.log("unlocked");
 		setInterval(function(){
 			location.reload()
@@ -106,26 +105,6 @@ console.log(token);
 	}
 </script>
 
-<!--<script>-->
-	<!--$( "button" ).click(function() {-->
-		<!--console.log($('h2').text())-->
-		<!--var toggle = this;-->
-		<!--// if ($('.padLock').css('background-color','red'));-->
-		<!--if($("h2").text()==='LOCKED')-->
-		<!--{-->
-			<!--console.log("contains locked");-->
-			<!--return (toggle.a = !toggle.a) ? switchOff(toggle) : switchOn(toggle);-->
-		<!--}-->
-		<!--// else if($('.padLock').css('background-color','green'))-->
-		<!--else if($("h2").text()==='NOT-LOCKED')-->
-		<!--{-->
-			<!--console.log("contains not locked")-->
-			<!--// // console.log("Im green at the moment and Im about to turn red")-->
-			<!--return (toggle.a = !toggle.a) ? switchOn(toggle) : switchOff(toggle);-->
-			<!--// //   return switchOn()-->
-		<!--}-->
-	<!--})-->
-<!--</script>-->
 <script>
 	fetch(`https://api.particle.io/v1/devices/${id}/?access_token=${token}`)
 		.then(function (response) {
@@ -154,3 +133,28 @@ console.log(token);
 		console.log(new Date(lastHandShake), "last handshake")
   })
 </script>
+
+
+
+
+
+<!--<script>-->
+<!--$( "button" ).click(function() {-->
+<!--console.log($('h2').text())-->
+<!--var toggle = this;-->
+<!--// if ($('.padLock').css('background-color','red'));-->
+<!--if($("h2").text()==='LOCKED')-->
+<!--{-->
+<!--console.log("contains locked");-->
+<!--return (toggle.a = !toggle.a) ? switchOff(toggle) : switchOn(toggle);-->
+<!--}-->
+<!--// else if($('.padLock').css('background-color','green'))-->
+<!--else if($("h2").text()==='NOT-LOCKED')-->
+<!--{-->
+<!--console.log("contains not locked")-->
+<!--// // console.log("Im green at the moment and Im about to turn red")-->
+<!--return (toggle.a = !toggle.a) ? switchOn(toggle) : switchOff(toggle);-->
+<!--// //   return switchOn()-->
+<!--}-->
+<!--})-->
+<!--</script>-->

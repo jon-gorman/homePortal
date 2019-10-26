@@ -10,13 +10,17 @@
             0 8px 8px rgba(0,0,0,0.20);
 }
 
-
+/******* Main Page *******/
+#page{
+    font-family: 'Audiowide', cursive;
+}
 
 /******* Door *******/
 
 /*Button*/
 
 #buttonLock{
+    font-family: 'Audiowide', cursive;
     background-color: #5AC0DF !important;
     border: none;
     box-shadow:
