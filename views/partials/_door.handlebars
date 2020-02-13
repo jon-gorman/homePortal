@@ -7,8 +7,8 @@
 </script>
 <div class="wrapper">
 	<h1 class="title">Door Control</h1>
-	<button type="button" class="btn btn-primary btn-lg" id="buttonLock" onclick="switchOn()" >lock switch</button>
-	<button type="button" class="btn btn-primary btn-lg" id="buttonLock" onclick="switchOff()">unlock switch</button>
+	<button type="button" class="btn btn-primary btn-block" id="buttonLock" onclick="switchOn()" style="display: none">lock switch</button>
+	<button type="button" class="btn btn-primary btn-block" id="buttonLock" onclick="switchOff()" style="display: none">unlock switch</button>
 	<div style="visibility: hidden" id="accessId">
 
 		{{accessId}}
@@ -24,6 +24,9 @@
 		<div id="padLock" class="padLock">Door Status:
 		</div>
 	</div>
+    <div class="emergency">
+        <button type="button" class="btn btn-info btn-lg" style="background-color: white; border: white">Display</button>
+    </div>
 </div>
 <script>
 	let getId = $('#accessId').prop('innerHTML');
@@ -44,15 +47,21 @@ console.log(token);
 			console.log(jsonData.result);
 			if(results===1){
 				$('.padLock').append( "<h2>LOCKED</h2>" );
+				$('.btn:nth-child(3)').show('slow')
 				// $('.padLock').css('background-color', 'red');
 				console.log("I am red because I equal 1")
+
 			}
 			if(results===0){
 				$('.padLock').append( "<h2>NOT-LOCKED</h2>" );
+                $('.btn:nth-child(2)').show('slow')
 				// $('.padLock').css('background-color', 'green');
 				console.log("I am green because I equal 0")
 			}
 		});
+		$('.emergency button').click(function(){
+		    $('.btn:nth-child(n) ').show('slow')
+        })
 	};
 	// ,
 	// 500);
